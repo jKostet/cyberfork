@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     public float thrust = 50;
     public float maxSpeed = 20;
@@ -33,6 +34,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (!isLocalPlayer) {
+			return;
+		}
         UpdateInput();
     }
 
@@ -91,6 +95,7 @@ public class Player : MonoBehaviour
                         forkJoint.connectedBody = otherRb;
                         liftedFriction = otherRb.drag;
                         otherRb.drag = 0;
+                        leftObject.GetComponent<Carriable>().PickUp();
                         if (forkJoint.connectedBody != null) forkJoint.enabled = true;
                     }
                 }
@@ -103,6 +108,7 @@ public class Player : MonoBehaviour
                 Rigidbody2D otherRb = forkJoint.connectedBody;
                 if (otherRb != null)
                 {
+                    otherRb.gameObject.GetComponent<Carriable>().PickDown();
                     otherRb.drag = liftedFriction;
                     forkJoint.connectedBody = null;
                 }
