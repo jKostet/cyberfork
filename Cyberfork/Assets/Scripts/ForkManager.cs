@@ -12,8 +12,6 @@ public class ForkManager : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Carriable car = col.GetComponent<Carriable>();
-        if (car != null)
         {
             objectsOnFork.Add(col.gameObject);
         }
