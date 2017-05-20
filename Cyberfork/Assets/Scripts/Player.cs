@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     public float thrust = 50;
     public float maxSpeed = 20;
@@ -33,6 +34,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (!isLocalPlayer) {
+			return;
+		}
         UpdateInput();
     }
 
