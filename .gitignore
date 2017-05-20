@@ -1,7 +1,7 @@
 *#
 *~
 Cyberfork/Temp/*
-Cyberfork/Library/*
+Cyberfork/Library/**
 Cyberfork/Library/metadata/*
 *.pidb
 *.userprefs

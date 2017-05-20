@@ -10,11 +10,6 @@ public class Destroyable : MonoBehaviour
     public float minBlastPower = 10;
     public float maxBlastPower = 20;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);    
-    }
-
     private void OnDestroy()
     {
         for (int i = 0; i < amount; i++)
