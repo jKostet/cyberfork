@@ -11,7 +11,6 @@ public class ArenaBuilder : MonoBehaviour {
 	// Use this for initialization
 	void Awake() {
         CreateWalls();
-        CenterCamera();
     }
 
     void CreateWalls()
@@ -32,11 +31,5 @@ public class ArenaBuilder : MonoBehaviour {
             wall1.transform.parent = arena.transform;
             wall2.transform.parent = arena.transform;
         }
-    }
-
-    void CenterCamera()
-    {
-        Camera.main.transform.position = new Vector3((width+2) / 2, (height+2) / 2, -10);
-        Camera.main.orthographicSize = width / 4;
     }
 }
