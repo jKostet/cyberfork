@@ -1,5 +1,10 @@
 *#
 *~
 Cyberfork/Temp/*
+Cyberfork/Library/*
+Cyberfork/Library/metadata/*
 *.pidb
 *.userprefs
+*.meta
+Cyberfork/Assets/Scenes/Playground
+*.xcf

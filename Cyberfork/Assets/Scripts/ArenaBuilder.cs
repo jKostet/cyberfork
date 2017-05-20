@@ -9,7 +9,13 @@ public class ArenaBuilder : MonoBehaviour {
     public GameObject wall;
 
 	// Use this for initialization
-	void Start() {
+	void Awake() {
+        CreateWalls();
+        CenterCamera();
+    }
+
+    void CreateWalls()
+    {
         GameObject arena = new GameObject("ArenaBorders");
         for (int x = 0; x <= width + 2; x++)
         {
@@ -22,9 +28,15 @@ public class ArenaBuilder : MonoBehaviour {
         for (int y = 1; y <= height + 1; y++)
         {
             GameObject wall1 = Instantiate(wall, new Vector3(0, y, 0), Quaternion.identity);
-            GameObject wall2 = Instantiate(wall, new Vector3(width+2, y, 0), Quaternion.identity);
+            GameObject wall2 = Instantiate(wall, new Vector3(width + 2, y, 0), Quaternion.identity);
             wall1.transform.parent = arena.transform;
             wall2.transform.parent = arena.transform;
         }
+    }
+
+    void CenterCamera()
+    {
+        Camera.main.transform.position = new Vector3((width+2) / 2, (height+2) / 2, -10);
+        Camera.main.orthographicSize = width / 4;
     }
 }
