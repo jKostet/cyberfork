@@ -95,6 +95,7 @@ public class Player : NetworkBehaviour
                         forkJoint.connectedBody = otherRb;
                         liftedFriction = otherRb.drag;
                         otherRb.drag = 0;
+                        leftObject.GetComponent<Carriable>().PickUp();
                         if (forkJoint.connectedBody != null) forkJoint.enabled = true;
                     }
                 }
@@ -107,6 +108,7 @@ public class Player : NetworkBehaviour
                 Rigidbody2D otherRb = forkJoint.connectedBody;
                 if (otherRb != null)
                 {
+                    otherRb.gameObject.GetComponent<Carriable>().PickDown();
                     otherRb.drag = liftedFriction;
                     forkJoint.connectedBody = null;
                 }
