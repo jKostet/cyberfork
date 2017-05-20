@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     public float turningSpeed = 100;
 
     Rigidbody2D rb;
-    ForkManager forks;
+    ForkManager leftFork;
+    ForkManager rightFork;
+    FixedJoint2D forkJoint;
     bool isLifting = false;
     //GameObject lifted = null;
     
@@ -22,7 +24,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        forks = transform.GetChild(0).GetComponent<ForkManager>();
+        forkJoint = GetComponent<FixedJoint2D>();
+        forkJoint.enabled = false;
+        rightFork = transform.GetChild(0).GetComponent<ForkManager>();
+        leftFork = transform.GetChild(1).GetComponent<ForkManager>();
     }
     // Update is called once per frame
     void Update()
@@ -76,17 +81,26 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!isLifting && forks.objectsOnFork.Count > 0)
-            {
-                Rigidbody2D otherRb = forks.objectsOnFork[0].GetComponent<Rigidbody2D>();
-                if(otherRb != null)
+            if (!isLifting) {
+                if (leftFork.objectsOnFork.Count > 0)
                 {
-                    FixedJoint2D joint = otherRb.gameObject.AddComponent<FixedJoint2D>();
-                    joint.connectedBody = rb;
+                    GameObject leftObject = leftFork.objectsOnFork[0];
+                    if (rightFork.objectsOnFork.Contains(leftObject))
+                    {
+                        forkJoint.connectedBody = leftObject.GetComponent<Rigidbody2D>();
+                        if (forkJoint.connectedBody != null) forkJoint.enabled = true;
+                    }
                 }
+                leftFork.GetComponent<BoxCollider2D>().isTrigger = false;
+                rightFork.GetComponent<BoxCollider2D>().isTrigger = false;
             }
             else
             {
+                forkJoint.enabled = false;
+                forkJoint.connectedBody = null;
+
+                leftFork.GetComponent<BoxCollider2D>().isTrigger = true;
+                rightFork.GetComponent<BoxCollider2D>().isTrigger = true;
             }
             isLifting = !isLifting;
         }
