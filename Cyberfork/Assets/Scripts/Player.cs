@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     ForkManager rightFork;
     FixedJoint2D forkJoint;
     bool isLifting = false;
+    float liftedFriction = 0;
     //GameObject lifted = null;
     
     float forwardFriction { get { return thrust / maxSpeed; } }
@@ -87,7 +88,9 @@ public class Player : MonoBehaviour
                     GameObject leftObject = leftFork.objectsOnFork[0];
                     if (rightFork.objectsOnFork.Contains(leftObject))
                     {
-                        forkJoint.connectedBody = leftObject.GetComponent<Rigidbody2D>();
+                        Rigidbody2D otherRb = forkJoint.connectedBody = leftObject.GetComponent<Rigidbody2D>();
+                        liftedFriction = otherRb.drag;
+                        otherRb.drag = 0;
                         if (forkJoint.connectedBody != null) forkJoint.enabled = true;
                     }
                 }
@@ -97,8 +100,12 @@ public class Player : MonoBehaviour
             else
             {
                 forkJoint.enabled = false;
-                forkJoint.connectedBody = null;
-
+                Rigidbody2D otherRb = forkJoint.connectedBody;
+                if (otherRb != null)
+                {
+                    otherRb.drag = liftedFriction;
+                    forkJoint.connectedBody = null;
+                }
                 leftFork.GetComponent<BoxCollider2D>().isTrigger = true;
                 rightFork.GetComponent<BoxCollider2D>().isTrigger = true;
             }
