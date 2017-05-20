@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            Debug.Log("as");
             Thrust(rb, thrust, forwardFriction);
         }
 
@@ -86,9 +85,10 @@ public class Player : MonoBehaviour
                 if (leftFork.objectsOnFork.Count > 0)
                 {
                     GameObject leftObject = leftFork.objectsOnFork[0];
-                    if (rightFork.objectsOnFork.Contains(leftObject))
+                    Rigidbody2D otherRb = leftObject.GetComponent<Rigidbody2D>();
+                    if (otherRb != null && rightFork.objectsOnFork.Contains(leftObject))
                     {
-                        Rigidbody2D otherRb = forkJoint.connectedBody = leftObject.GetComponent<Rigidbody2D>();
+                        forkJoint.connectedBody = otherRb;
                         liftedFriction = otherRb.drag;
                         otherRb.drag = 0;
                         if (forkJoint.connectedBody != null) forkJoint.enabled = true;
