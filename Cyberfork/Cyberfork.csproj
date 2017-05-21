@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ArenaBuilder.cs" />
     <Compile Include="Assets\Scripts\Box.cs" />
+    <Compile Include="Assets\Scripts\BoxSpawner.cs" />
     <Compile Include="Assets\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Scripts\Carriable.cs" />
     <Compile Include="Assets\Scripts\Conveyor.cs" />
