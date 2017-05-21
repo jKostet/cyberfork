@@ -10,7 +10,7 @@ public class Destroyable : MonoBehaviour
     public float minBlastPower = 10;
     public float maxBlastPower = 20;
 
-    private void OnDestroy()
+    public void DestroyThis()
     {
         for (int i = 0; i < amount; i++)
         {
@@ -23,5 +23,6 @@ public class Destroyable : MonoBehaviour
             Rigidbody2D rb = piece.GetComponent<Rigidbody2D>();
             if(rb != null) rb.velocity = blast * dir;
         }
+        Destroy(gameObject);
     }
 }

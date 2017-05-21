@@ -6,18 +6,19 @@ public class BoxSpawner : NetworkBehaviour {
 	public GameObject Box;
 	public int numBoxes;
     public float distFromWalls;
+    public Transform corner1;
+    public Transform corner2;
 
-    float width;
-    float height;
+    float x1 { get { return corner1.position.x; } }
+    float y1 { get { return corner1.position.y; } }
+    float x2 { get { return corner2.position.x; } }
+    float y2 { get { return corner2.position.y; } }
     public override void OnStartServer()
 	{
-        ArenaBuilder arenaBuilder = FindObjectOfType<ArenaBuilder>();
-        width = arenaBuilder.width;
-        height = arenaBuilder.height;
 		for (int i=0; i < numBoxes; i++)
 		{
-            Vector3 pos = new Vector3(Random.Range(distFromWalls+1, width-distFromWalls+1),
-                                        Random.Range(distFromWalls+1, height-distFromWalls+1), 0);
+            Vector3 pos = new Vector3(Random.Range(x1, x2),
+                                        Random.Range(y1, y2), 0);
             float rotation = Random.Range(0, 360);
             GameObject box = Instantiate(Box, pos, Quaternion.identity);
             box.transform.Rotate(0, 0, rotation);

@@ -13,7 +13,6 @@ public class ObjectsToGoal : MonoBehaviour {
         List<GameObject> removable = new List<GameObject>();
         foreach (var obj in objectsToGoal)
         {
-            Debug.Log((goal.transform.position - obj.transform.position).sqrMagnitude);
             if ((goal.transform.position - obj.transform.position).sqrMagnitude < dist*dist)
             {
                 removable.Add(obj);

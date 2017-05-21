@@ -89,15 +89,19 @@ public class Player : NetworkBehaviour
                 if (leftFork.objectsOnFork.Count > 0)
                 {
                     GameObject leftObject = leftFork.objectsOnFork[0];
-                    Rigidbody2D otherRb = leftObject.GetComponent<Rigidbody2D>();
-                    if (otherRb != null && rightFork.objectsOnFork.Contains(leftObject))
+                    if(leftObject != null)
                     {
-                        forkJoint.connectedBody = otherRb;
-                        liftedFriction = otherRb.drag;
-                        otherRb.drag = 0;
-                        Carriable car = leftObject.GetComponent<Carriable>();
-                        if (car != null) car.PickUp();
-                        if (forkJoint.connectedBody != null) forkJoint.enabled = true;
+                        Rigidbody2D otherRb = leftObject.GetComponent<Rigidbody2D>();
+                        if (otherRb != null && rightFork.objectsOnFork.Contains(leftObject))
+                        {
+                            forkJoint.connectedBody = otherRb;
+                            liftedFriction = otherRb.drag;
+                            otherRb.drag = 0;
+                            Carriable car = leftObject.GetComponent<Carriable>();
+                            if (car != null) car.PickUp();
+                            if (forkJoint.connectedBody != null) forkJoint.enabled = true;
+                        }
+
                     }
                 }
                 leftFork.GetComponent<BoxCollider2D>().isTrigger = false;
