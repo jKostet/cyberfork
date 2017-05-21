@@ -6,17 +6,25 @@ using UnityEngine.Networking;
 public class Player : NetworkBehaviour
 {
     public float thrust = 50;
-    public float maxSpeed = 20;
+    public float maxSpeed = 12;
     public float breakForce = 50;
     public float backSpeed = 10;
     public float rollingFriction = 5;
-    public float turningSpeed = 100;
+    public float turningSpeed = 200;
+
+    public float boost = 50;
+    public float boostTime = 3;
+    public float recoverTime = 1;
+    public float coolDown = 0.2f;
 
     Rigidbody2D rb;
     ForkManager leftFork;
     ForkManager rightFork;
     FixedJoint2D forkJoint;
     bool isLifting = false;
+    float lastBoost = 0;
+    float boostLeft;
+    float boostPower;
     float liftedFriction = 0;
     //GameObject lifted = null;
     
@@ -25,6 +33,8 @@ public class Player : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
+        boostPower = boost;
+        boostLeft = boostTime;
         rb = GetComponent<Rigidbody2D>();
         forkJoint = GetComponent<FixedJoint2D>();
         forkJoint.enabled = false;
@@ -44,6 +54,11 @@ public class Player : NetworkBehaviour
     {
         Movement();
         Lift();
+        lastBoost += Time.deltaTime;
+        if (lastBoost > coolDown)
+        {
+            boostLeft = Mathf.Min(boostLeft + boostTime * Time.deltaTime / recoverTime, boostTime);
+        }
     }
 
     void Movement()
@@ -52,7 +67,15 @@ public class Player : NetworkBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             Thrust(rb, thrust, forwardFriction);
+            Debug.Log(boostTime);
+            if (boostTime > 0 && Input.GetKey(KeyCode.LeftShift))
+            {
+                lastBoost = 0;
+                Thrust(rb, boost, forwardFriction);
+                boostTime -= Time.deltaTime;
+            }
         }
+
 
         else if (Input.GetKey(KeyCode.S))
         {

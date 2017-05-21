@@ -13,7 +13,8 @@ public class ObjectsToGoal : MonoBehaviour {
         List<GameObject> removable = new List<GameObject>();
         foreach (var obj in objectsToGoal)
         {
-            if ((goal.transform.position - obj.transform.position).sqrMagnitude < dist*dist)
+            Debug.Log((goal.transform.position));
+            if (Distance2D(goal.transform, obj.transform) < dist*dist)
             {
                 removable.Add(obj);
             }
@@ -22,6 +23,13 @@ public class ObjectsToGoal : MonoBehaviour {
         {
             objectsToGoal.Remove(obj);
         }
+    }
+
+    float Distance2D(Transform t1, Transform t2)
+    {
+        var v1 = new Vector3(t1.position.x, t1.position.y);
+        var v2 = new Vector3(t2.position.x, t2.position.y);
+        return (v1 - v2).sqrMagnitude;
     }
 
     public bool Completed()
