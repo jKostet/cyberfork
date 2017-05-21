@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyberfork", "Cyberfork.csproj", "{E5A9806A-D9F2-804A-9AC9-211BCA40867B}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyberfork", "Assembly-CSharp.csproj", "{E61C2CE8-85D3-7AB1-76BE-E8559CA44CA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E5A9806A-D9F2-804A-9AC9-211BCA40867B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5A9806A-D9F2-804A-9AC9-211BCA40867B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5A9806A-D9F2-804A-9AC9-211BCA40867B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5A9806A-D9F2-804A-9AC9-211BCA40867B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61C2CE8-85D3-7AB1-76BE-E8559CA44CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61C2CE8-85D3-7AB1-76BE-E8559CA44CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61C2CE8-85D3-7AB1-76BE-E8559CA44CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61C2CE8-85D3-7AB1-76BE-E8559CA44CA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
