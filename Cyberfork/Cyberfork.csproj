@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\BombSpawner.cs" />
     <Compile Include="Assets\Scripts\Box.cs" />
     <Compile Include="Assets\Scripts\BoxFixer.cs" />
+    <Compile Include="Assets\Scripts\BoxFixerSpawner.cs" />
     <Compile Include="Assets\Scripts\BoxSpawner.cs" />
     <Compile Include="Assets\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Scripts\Carriable.cs" />

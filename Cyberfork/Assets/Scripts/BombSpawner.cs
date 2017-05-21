@@ -21,7 +21,6 @@ public class BombSpawner : NetworkBehaviour {
     }
     void Update ()
     {
-        Debug.Log("moi");
         if (!hasStarted) return;
         List<GameObject> destroyed = new List<GameObject>();
 
@@ -38,16 +37,19 @@ public class BombSpawner : NetworkBehaviour {
         if(spawnedBombs.Count < numOfBombs)
         {
             lastSpawned += Time.deltaTime;
-        }
 
-        if(lastSpawned < spawnInterval)
-        {
-            foreach (var b in spawnedBombs)
+            if (lastSpawned > spawnInterval)
             {
-                if ((b.transform.position - spawnPosition.position).sqrMagnitude < 5) return;
+                foreach (var b in spawnedBombs)
+                {
+                    if ((b.transform.position - spawnPosition.position).sqrMagnitude < 5) return;
+                }
+                Debug.Log(gameObject.name);
+                GameObject bo = Instantiate(bomb, spawnPosition);
+                NetworkServer.Spawn(bo);
+                spawnedBombs.Add(bo);
+                lastSpawned = 0;
             }
-            NetworkServer.Spawn(Instantiate(bomb, spawnPosition));
-            lastSpawned = 0;
         }
 	}
 }
