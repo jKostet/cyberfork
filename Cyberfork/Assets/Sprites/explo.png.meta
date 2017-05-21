@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1973de94c1bda408792364431207dc46
-timeCreated: 1495289566
+timeCreated: 1495313767
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -121,7 +121,7 @@ TextureImporter:
         width: 365
         height: 368
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -129,12 +129,12 @@ TextureImporter:
       name: explo small
       rect:
         serializedVersion: 2
-        x: 375
+        x: 444
         y: 194
-        width: 265
-        height: 206
+        width: 190
+        height: 174
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -142,12 +142,12 @@ TextureImporter:
       name: explo smoke
       rect:
         serializedVersion: 2
-        x: 374
+        x: 397
         y: 0
-        width: 266
-        height: 195
+        width: 206
+        height: 164
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
