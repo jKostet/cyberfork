@@ -8,10 +8,8 @@ public class Conveyor : MonoBehaviour {
     public float speed = 5;
     
     List<GameObject> objectsOnConveyor;
-    BoxCollider2D col;
 	// Use this for initialization
 	void Start () {
-        col = GetComponent<BoxCollider2D>();
         objectsOnConveyor = new List<GameObject>();
 	}
 	
