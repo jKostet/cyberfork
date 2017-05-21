@@ -21,4 +21,9 @@ public class ForkManager : MonoBehaviour {
         objectsOnFork.Remove(col.gameObject);
     }
 
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        objectsOnFork.Remove(col.gameObject);
+    }
+
 }
