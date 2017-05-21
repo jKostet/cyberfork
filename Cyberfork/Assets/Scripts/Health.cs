@@ -14,4 +14,9 @@ public class Health : NetworkBehaviour {
         if (health < 0) Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        if (health < 0) Destroy(gameObject);
+    }
+
 }

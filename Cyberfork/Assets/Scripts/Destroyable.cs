@@ -20,7 +20,8 @@ public class Destroyable : MonoBehaviour
             Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
             GameObject piece = Instantiate(pieces, transform.position, Quaternion.identity);
             piece.transform.Rotate(0, 0, rotation);
-            piece.GetComponent<Rigidbody2D>().velocity = blast * dir;
+            Rigidbody2D rb = piece.GetComponent<Rigidbody2D>();
+            if(rb != null) rb.velocity = blast * dir;
         }
     }
 }

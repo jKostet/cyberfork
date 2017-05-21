@@ -8,6 +8,7 @@ public class ArenaBuilder : MonoBehaviour {
     public int width = 30;
     public int height = 10;
     public GameObject wall;
+    public GameObject boxFixer;
 
 	// Use this for initialization
 	void Awake() {
@@ -32,5 +33,7 @@ public class ArenaBuilder : MonoBehaviour {
             wall1.transform.parent = arena.transform;
             wall2.transform.parent = arena.transform;
         }
+
+        Instantiate(boxFixer, new Vector3(width / 2, height / 2), Quaternion.identity);
     }
 }

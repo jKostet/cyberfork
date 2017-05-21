@@ -21,7 +21,6 @@ public class BoxSpawner : NetworkBehaviour {
             float rotation = Random.Range(0, 360);
             GameObject box = Instantiate(Box, pos, Quaternion.identity);
             box.transform.Rotate(0, 0, rotation);
-            Debug.Log("moi");
             NetworkServer.Spawn(box);
 			//var pos = new Vector3(
 			//	Random.Range(1.0f, 8.0f),
